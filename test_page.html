@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<p id="demo">Feedback text</p>
+		<button type="button" id="takki_1">Buttonss</button>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				
+				var feedback = $("#demo");
+
+				function update(evt) {
+					$.get("http://localhost:8888/update", function(data, status) {
+						feedback.html(data);
+					});
+				};
+
+
+				var refreshId = setInterval(update, 200);
+
+
+				function fall_1(evt) {
+				   	//alert("Function was called");
+				   	xmlhttp = new XMLHttpRequest();
+				   	xmlhttp.open("GET","http://localhost:8888/getstring", true);
+					xmlhttp.onreadystatechange=function(){
+				    	if (xmlhttp.readyState==4 && xmlhttp.status==200){
+				        	$("#demo").html(xmlhttp.responseText);
+				    	}
+					}
+				   	xmlhttp.send();
+				};
+
+				$("#takki_1").click(function() {
+					fall_1();
+				});
+
+
+			});
+		</script>
+
+	</body>
+</html>
