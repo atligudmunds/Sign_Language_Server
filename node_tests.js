@@ -27,6 +27,6 @@ http.createServer(function(request, response) {
 			response.end(file, "utf-8");
 		});
 	}
-}).listen(8888);
+}).listen(process.env.PORT);
 
 
