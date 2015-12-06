@@ -1,0 +1,26 @@
+{
+  "name": "node-js-getting-started",
+  "version": "0.1.5",
+  "description": "A sample Node.js app using Express 4",
+  "main": "node_tests.js",
+  "scripts": {
+    "start": "node node_tests.js"
+  },
+  "dependencies": {
+    "ejs": "2.3.3",
+    "express": "4.13.3"
+  },
+  "engines": {
+    "node": "0.12.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atligudmunds/Sign_Language_Server"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
