@@ -18,7 +18,7 @@ http.createServer(function(request, response) {
 		response.end();
 	}
 	else if(path == "/update") {
-		console.log("got a update request");
+		console.log("got an update request");
 		response.writeHead(200, {"Content-Type" : "text/plain"});
 		response.write(currentWord);
 		response.end();
