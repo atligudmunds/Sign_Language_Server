@@ -20,7 +20,7 @@
 						console.log("Old data:" + feedback.html());
 						console.log("New data:" + data);
 
-						if(feedback.html != data) {
+						if(feedback.html() != data) {
 							//responsiveVoice.speak(data);
 							feedback.html(data);
 						}
