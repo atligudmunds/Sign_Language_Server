@@ -17,8 +17,14 @@
 
 				function update(evt) {
 					$.get("https://sheltered-eyrie-1287.herokuapp.com/update", function(data, status) {
-						feedback.html(data);
-						responsiveVoice.speak(data);
+						if(feedback.html != data) {
+							//responsiveVoice.speak(data);
+							feedback.html(data);
+						}
+						else {
+							console.log("The previous word and the new word from server are the same");
+						}
+						
 					});
 				};
 
