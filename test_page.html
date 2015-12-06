@@ -11,6 +11,8 @@
 			$(document).ready(function() {
 				
 				var feedback = $("#demo");
+				var theWords = ["goodbye", "hello", "yes", "no", "name"];
+				var counter = 0;
 
 				function update(evt) {
 					$.get("https://sheltered-eyrie-1287.herokuapp.com/update", function(data, status) {
@@ -18,29 +20,21 @@
 					});
 				};
 
-
 				var refreshId = setInterval(update, 200);
 
-
-				function fall_1(evt) {
+				function change(evt) {
 				   	//alert("Function was called");
-				   	xmlhttp = new XMLHttpRequest();
-				   	xmlhttp.open("GET","https://sheltered-eyrie-1287.herokuapp.com/getstring", true);
-					xmlhttp.onreadystatechange=function(){
-				    	if (xmlhttp.readyState==4 && xmlhttp.status==200){
-				        	$("#demo").html(xmlhttp.responseText);
-				    	}
-					}
-				   	xmlhttp.send();
+				   	$.get("https://sheltered-eyrie-1287.herokuapp.com/change?" + theWords[counter], function(data, status) {
+						counter++;
+						feedback.html(data);
+					});
 				};
 
 				$("#takki_1").click(function() {
-					fall_1();
+					change();
 				});
-
 
 			});
 		</script>
-
 	</body>
 </html>

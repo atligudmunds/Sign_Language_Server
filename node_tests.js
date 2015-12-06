@@ -2,23 +2,25 @@
 var http = require("http");
 var url = require("url"); // For URL processing
 var fs = require("fs"); // For filesystem access
-var fylki = ["First response", "The Second", "The third", "The fourth", "The fifth"];
-var count = 0;
+var currentWord = "-No word said-";
 
 http.createServer(function(request, response) {
 	var path = url.parse(request.url).pathname;
 
-	if(path == "/getstring") {
-		console.log("got a getstring request");
+	if(path == "/change") {
+		var queries = url.parse(request.url).query;
+		console.log("The queries:" + queries);
+		currentWord = queries;
+
+		console.log("got a change request");
 		response.writeHead(200, {"Content-Type" : "text/plain"});
-		response.write(fylki[count]);
-		count++;
+		response.write(currentWord);
 		response.end();
 	}
 	else if(path == "/update") {
 		console.log("got a update request");
 		response.writeHead(200, {"Content-Type" : "text/plain"});
-		response.write(fylki[count]);
+		response.write(currentWord);
 		response.end();
 	}
 	else {
