@@ -2,7 +2,7 @@
 var http = require("http");
 var url = require("url"); // For URL processing
 var fs = require("fs"); // For filesystem access
-var currentWord = "-No word said-";
+var currentWord = "";
 
 http.createServer(function(request, response) {
 	var path = url.parse(request.url).pathname;

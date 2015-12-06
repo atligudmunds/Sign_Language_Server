@@ -2,22 +2,24 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	</head>
 	<body>
-		<p id="demo">Feedback text</p>
-		<button type="button" id="takki_1">Buttonss</button>
+		<h2 id="heading">Hand Sign Translator</h2>
+		<div id="jumbo-border">
+			<div class="jumbotron">
+				<h1 id="feedback">Feedback text</h1>
+			</div>
+		</div>
 		<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script>
 			$(document).ready(function() {
 				
-				var feedback = $("#demo");
+				var feedback = $("#feedback");
 
 				function update(evt) {
 					$.get("https://sheltered-eyrie-1287.herokuapp.com/update", function(data, status) {
-						//console.log("Old data:" + feedback.html());
-						//console.log("New data:" + data);
-
 						if(feedback.html() != data) {
 							responsiveVoice.speak(data);
 							feedback.html(data);
@@ -25,13 +27,29 @@
 						else {
 							console.log("The previous word and the new word from server are the same");
 						}
-						
 					});
 				};
 
-				var refreshId = setInterval(update, 200);
-
+				var refreshId = setInterval(update, 150);
 			});
 		</script>
+
+		<style>
+			#heading
+			{
+				padding-left: 25px;
+			}
+
+			#jumbo-border
+			{
+				padding-left: 50px;
+				padding-right: 50px;
+			}
+
+			h1
+			{
+				text-align: center;
+			}
+		</style>
 	</body>
 </html>
