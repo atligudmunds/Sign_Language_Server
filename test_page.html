@@ -17,7 +17,7 @@
 
 				function update(evt) {
 					$.get("https://sheltered-eyrie-1287.herokuapp.com/update", function(data, status) {
-						console.log("Old data:" + feedback.html);
+						console.log("Old data:" + feedback.html());
 						console.log("New data:" + data);
 
 						if(feedback.html != data) {
