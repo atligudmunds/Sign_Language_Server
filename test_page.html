@@ -6,33 +6,36 @@
 	<body>
 		<p id="demo">Feedback text</p>
 		<button type="button" id="takki_1">Buttonss</button>
+		<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script>
 			$(document).ready(function() {
 				
 				var feedback = $("#demo");
-				var theWords = ["goodbye", "hello", "yes", "no", "name"];
-				var counter = 0;
+				//var theWords = ["goodbye", "hello", "yes", "no", "name"];
+				//var counter = 0;
 
 				function update(evt) {
 					$.get("https://sheltered-eyrie-1287.herokuapp.com/update", function(data, status) {
 						feedback.html(data);
+						responsiveVoice.speak(data);
 					});
 				};
 
-				var refreshId = setInterval(update, 200);
+				var refreshId = setInterval(update, 150);
 
-				function change(evt) {
+				/*function change(evt) {
 				   	//alert("Function was called");
 				   	$.get("https://sheltered-eyrie-1287.herokuapp.com/change?" + theWords[counter], function(data, status) {
 						counter++;
 						feedback.html(data);
+						responsiveVoice.speak("right");
 					});
 				};
 
 				$("#takki_1").click(function() {
 					change();
-				});
+				});*/
 
 			});
 		</script>
