@@ -13,7 +13,7 @@
 				var feedback = $("#demo");
 
 				function update(evt) {
-					$.get("http://localhost:8888/update", function(data, status) {
+					$.get("https://sheltered-eyrie-1287.herokuapp.com/update", function(data, status) {
 						feedback.html(data);
 					});
 				};
@@ -25,7 +25,7 @@
 				function fall_1(evt) {
 				   	//alert("Function was called");
 				   	xmlhttp = new XMLHttpRequest();
-				   	xmlhttp.open("GET","http://localhost:8888/getstring", true);
+				   	xmlhttp.open("GET","https://sheltered-eyrie-1287.herokuapp.com/getstring", true);
 					xmlhttp.onreadystatechange=function(){
 				    	if (xmlhttp.readyState==4 && xmlhttp.status==200){
 				        	$("#demo").html(xmlhttp.responseText);
